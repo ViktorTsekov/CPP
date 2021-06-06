@@ -19,6 +19,7 @@ int** board;
 int row;
 int col;
 
+int score;
 int gameMode;
 
 int emptySpace;
@@ -57,6 +58,7 @@ void initBoard() {
 }
 
 void print() {
+	
 	for(int i = 0; i < row; i++) {
 		for(int j = 0; j < col; j++) {
 			int cur = board[i][j];
@@ -74,6 +76,8 @@ void print() {
 		}
 		cout << endl;
 	}
+	
+	cout << "Score: " << score << endl;
 }
 
 void setMemory() {
@@ -112,10 +116,12 @@ void getInput() {
 }
 
 void projectSnake() {
+	
 	for(int i = 0; i < snakeBody.size(); i++) {
 		Point cur = snakeBody[i];
 		board[cur.x][cur.y] = snake;
 	}
+	
 }
 
 void generateFood() {
@@ -127,6 +133,7 @@ void generateFood() {
 		try {
 
 			do {
+				score += 100;
 				x = 2 + (rand() % row - 2);
 				y = 2 + (rand() % col - 2);
 				cur = board[x][y];
@@ -199,6 +206,7 @@ void move() {
 
 void Start(int size, int _gameMode) {
 	srand((unsigned) time(NULL));
+	score = 0;
 	row = size / 2;
 	col = size;
 	emptySpace = 0;
