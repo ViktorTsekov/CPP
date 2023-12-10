@@ -7,6 +7,7 @@ void printMatrix(char** matrix) {
     	
         for(int j = 0; j < 12; j++) {
             std::cout<<*(*(matrix + i) + j);
+        
         }        
         std::cout<<'\n';
     }
